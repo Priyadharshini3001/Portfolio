@@ -1,0 +1,910 @@
+/* ============================================
+   RESPONSIVE DESIGN
+   Mobile, Tablet & Desktop Optimization
+   ============================================ */
+
+/* ============================================
+   TABLET (768px - 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2.5rem;
+        --spacing-2xl: 3rem;
+    }
+
+    .page-title {
+        font-size: 2.8rem;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-image-placeholder {
+        height: 300px;
+    }
+
+    .image-frame {
+        width: 250px;
+        height: 250px;
+    }
+
+    .profile-initials {
+        font-size: 5rem;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .timeline-marker {
+        display: none;
+    }
+
+    .timeline-content {
+        margin-left: 0;
+    }
+
+    .project-card {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card:nth-child(even) {
+        direction: ltr;
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-menu {
+        gap: var(--spacing-md);
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   MOBILE (480px - 767px)
+   ============================================ */
+
+@media (max-width: 767px) {
+    :root {
+        --spacing-lg: 1.25rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 2.5rem;
+    }
+
+    section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* ========== Navigation ========== */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: linear-gradient(135deg, rgba(15, 20, 25, 0.95), rgba(8, 9, 13, 0.95));
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        gap: 0;
+        padding: var(--spacing-lg) 0;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-link {
+        display: block;
+        padding: var(--spacing-md) 0;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    /* ========== Hero Section ========== */
+    .hero {
+        grid-template-columns: 1fr;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .word {
+        display: block;
+    }
+
+    .typing-container {
+        height: auto;
+        margin: var(--spacing-md) 0;
+    }
+
+    .typing-text {
+        font-size: 1.2rem;
+        min-height: auto;
+    }
+
+    .cursor {
+        height: 1.4rem;
+    }
+
+    .hero-image-placeholder {
+        height: 250px;
+        margin: var(--spacing-lg) 0;
+    }
+
+    .image-frame {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-initials {
+        font-size: 3.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ========== Statistics ========== */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+    }
+
+    /* ========== Featured Cards ========== */
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* ========== Skills Section ========== */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .soft-skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: var(--spacing-md);
+    }
+
+    /* ========== Timeline ========== */
+    .timeline-item {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-timeline {
+        gap: var(--spacing-lg);
+    }
+
+    .resume-item {
+        padding: var(--spacing-md);
+    }
+
+    .item-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .item-date {
+        align-self: flex-start;
+    }
+
+    .item-header h3 {
+        font-size: 1.2rem;
+    }
+
+    /* ========== Projects ========== */
+    .projects-container {
+        gap: var(--spacing-lg);
+    }
+
+    .project-card {
+        padding: var(--spacing-lg);
+        grid-template-columns: 1fr;
+    }
+
+    .image-placeholder {
+        width: 200px;
+        height: 200px;
+        font-size: 3rem;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+    }
+
+    .project-content {
+        padding: var(--spacing-md);
+    }
+
+    /* ========== Testing Section ========== */
+    .skills-matrix {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .workflow-container {
+        gap: var(--spacing-md);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .execution-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .execution-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .architecture-layer {
+        padding: var(--spacing-md);
+    }
+
+    /* ========== GitHub Section ========== */
+    .profile-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-name {
+        font-size: 0.8rem;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .repositories-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .repo-card {
+        padding: var(--spacing-md);
+    }
+
+    .filter-container {
+        gap: var(--spacing-md);
+    }
+
+    .filter-buttons {
+        gap: var(--spacing-sm);
+    }
+
+    .filter-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .weeks-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    /* ========== Contact Section ========== */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .form-card,
+    .info-card,
+    .social-card,
+    .response-card {
+        padding: var(--spacing-lg);
+    }
+
+    .contact-form {
+        gap: var(--spacing-md);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: var(--spacing-md);
+    }
+
+    .social-links {
+        gap: var(--spacing-md);
+    }
+
+    .social-link {
+        padding: var(--spacing-md);
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .languages-list {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* ========== Resume Section ========== */
+    .resume-overview {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .skills-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .resume-cta {
+        padding: var(--spacing-xl);
+    }
+
+    .resume-cta h2 {
+        font-size: 1.5rem;
+    }
+
+    .projects-cta {
+        padding: var(--spacing-xl);
+    }
+
+    .projects-cta h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================
+   SMALL MOBILE (max 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-md: 1rem;
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 2rem;
+    }
+
+    section {
+        padding: var(--spacing-xl) var(--spacing-sm);
+    }
+
+    .page-title {
+        font-size: 1.6rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    /* ========== Navigation ========== */
+    .nav-container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-text {
+        letter-spacing: 1px;
+    }
+
+    /* ========== Hero Section ========== */
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .word {
+        display: inline;
+    }
+
+    .typing-text {
+        font-size: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .image-frame {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profile-initials {
+        font-size: 2.5rem;
+    }
+
+    /* ========== Stats ========== */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* ========== Skills ========== */
+    .skill-card {
+        padding: var(--spacing-md);
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-icon {
+        font-size: 2rem;
+    }
+
+    /* ========== Projects ========== */
+    .project-card {
+        padding: var(--spacing-md);
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+    }
+
+    .image-placeholder {
+        width: 150px;
+        height: 150px;
+        font-size: 2.5rem;
+    }
+
+    .project-features li {
+        font-size: 0.9rem;
+    }
+
+    /* ========== Testing ========== */
+    .workflow-step {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .workflow-label {
+        font-size: 0.8rem;
+    }
+
+    .dashboard-card {
+        padding: var(--spacing-md);
+    }
+
+    .card-number {
+        font-size: 1.8rem;
+    }
+
+    .card-detail {
+        font-size: 0.8rem;
+    }
+
+    /* ========== GitHub ========== */
+    .profile-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .profile-info h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .profile-link {
+        width: 100%;
+    }
+
+    .repo-card {
+        padding: var(--spacing-md);
+    }
+
+    .repo-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .filter-container {
+        gap: var(--spacing-sm);
+    }
+
+    .repo-search {
+        padding: var(--spacing-md);
+        font-size: 0.95rem;
+    }
+
+    .filter-buttons {
+        gap: var(--spacing-sm);
+    }
+
+    .filter-btn {
+        padding: 0.35rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .weeks-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* ========== Contact ========== */
+    .form-card h2,
+    .info-card h3,
+    .social-card h3,
+    .response-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-form {
+        gap: var(--spacing-md);
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: var(--spacing-md);
+        font-size: 0.95rem;
+    }
+
+    .social-links {
+        gap: var(--spacing-sm);
+    }
+
+    .social-link {
+        padding: var(--spacing-md);
+    }
+
+    .social-icon {
+        font-size: 1.2rem;
+    }
+
+    .social-link span:last-child {
+        font-size: 0.9rem;
+    }
+
+    .info-grid {
+        gap: var(--spacing-sm);
+    }
+
+    .info-item .icon {
+        font-size: 2rem;
+    }
+
+    .info-item h4 {
+        font-size: 1rem;
+    }
+
+    /* ========== Resume ========== */
+    .resume-overview {
+        gap: var(--spacing-md);
+    }
+
+    .overview-item h3 {
+        font-size: 0.8rem;
+    }
+
+    .overview-item p {
+        font-size: 0.9rem;
+    }
+
+    .skills-columns {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .skill-column {
+        padding: var(--spacing-md);
+    }
+
+    .skill-column h4 {
+        font-size: 1rem;
+    }
+
+    .certifications-grid {
+        gap: var(--spacing-md);
+    }
+
+    .cert-icon {
+        font-size: 2.5rem;
+    }
+
+    /* ========== Buttons ========== */
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-tertiary {
+        width: 100%;
+    }
+
+    /* ========== Overall ========== */
+    .page-wrapper {
+        padding-top: 70px;
+    }
+
+    section {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* ========== Text Size Optimization ========== */
+    .hero-subtitle {
+        line-height: 1.5;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .skill-item p,
+    .soft-skill-card p {
+        font-size: 0.9rem;
+    }
+
+    /* ========== Spacing Adjustments ========== */
+    .cta-buttons {
+        gap: var(--spacing-sm);
+    }
+
+    .card-tags {
+        gap: var(--spacing-xs);
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .featured-card {
+        padding: var(--spacing-md);
+    }
+
+    /* ========== Badge Sizing ========== */
+    .badge {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    .lang-badge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .status-badge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    /* ========== Form Improvements ========== */
+    .form-group input,
+    .form-group textarea {
+        border-radius: var(--radius-md);
+    }
+
+    textarea {
+        resize: vertical;
+        max-height: 200px;
+    }
+
+    /* ========== Hidden Elements on Small Screens ========== */
+    .progress-text {
+        display: none;
+    }
+
+    /* ========== Layout Fixes ========== */
+    .item-responsibilities ul {
+        padding-left: 0;
+    }
+
+    .item-responsibilities li {
+        padding-left: 1.2rem;
+    }
+}
+
+/* ============================================
+   LANDSCAPE MODE (Mobile)
+   ============================================ */
+
+@media (max-height: 600px) and (orientation: landscape) {
+    section {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-image-placeholder {
+        display: none;
+    }
+
+    .cta-buttons {
+        margin-top: var(--spacing-md);
+    }
+
+    .hero {
+        gap: var(--spacing-md);
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .navbar,
+    .hamburger,
+    .loading-screen,
+    #particles,
+    .cta-buttons {
+        display: none;
+    }
+
+    .page-wrapper {
+        padding-top: 0;
+    }
+
+    section {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    .btn {
+        border: 1px solid black;
+        color: black;
+    }
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-dark: #f8f9fa;
+        --primary-darker: #ffffff;
+        --primary-light: #e9ecef;
+        --text-primary: #212529;
+        --text-secondary: #495057;
+        --text-tertiary: #6c757d;
+        --glass-bg: rgba(233, 236, 239, 0.4);
+        --glass-border: rgba(0, 217, 255, 0.2);
+    }
+
+    body {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+    }
+
+    .image-frame::before {
+        background: var(--primary-dark);
+    }
+}

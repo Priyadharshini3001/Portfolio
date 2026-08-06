@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyadharshini Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+         <link rel="stylesheet" href="modern.css">
+
+                         <link rel="stylesheet" href="pmodern.css">
+
+
+    <style>
+        .terminal-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .terminal-container {
+            background: #0a0e27;
+            border: 2px solid var(--accent-primary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--accent-primary);
+        }
+
+        .terminal-title {
+            color: var(--accent-primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .terminal-btn.close {
+            background: #ff5f56;
+        }
+
+        .terminal-btn.minimize {
+            background: #ffbd2e;
+        }
+
+        .terminal-btn.maximize {
+            background: #27c93f;
+        }
+
+        .terminal-output {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .terminal-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .terminal-input input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .terminal-input input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .terminal-output::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-output::-webkit-scrollbar-track {
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .terminal-output::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        .output-error {
+            color: #ef4444;
+        }
+
+        .output-success {
+            color: #10b981;
+        }
+
+        .output-warning {
+            color: #f59e0b;
+        }
+
+        .output-info {
+            color: var(--accent-primary);
+        }
+
+        .command-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .command-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .command-card:nth-child(1) { animation-delay: 0.1s; }
+        .command-card:nth-child(2) { animation-delay: 0.2s; }
+        .command-card:nth-child(3) { animation-delay: 0.3s; }
+        .command-card:nth-child(4) { animation-delay: 0.4s; }
+        .command-card:nth-child(5) { animation-delay: 0.5s; }
+        .command-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .command-name {
+            color: var(--accent-primary);
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .command-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .ai-chat-section {
+            margin-top: 3rem;
+        }
+
+        .chat-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .chat-title {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .chat-message {
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .message-content {
+            background: rgba(0, 217, 255, 0.1);
+            border-left: 3px solid var(--accent-primary);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .message-user {
+            text-align: right;
+        }
+
+        .message-user .message-content {
+            background: rgba(124, 58, 237, 0.1);
+            border-left-color: var(--accent-secondary);
+            text-align: left;
+        }
+
+        .quick-questions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .question-btn {
+            padding: 1rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: var(--radius-md);
+            color: var(--accent-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .question-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .terminal-container {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .command-list {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-questions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">PRIYADHARSHINI S</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="journey.html" class="nav-link">Journey</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="testing.html" class="nav-link">Testing</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Particle Background -->
+    <div id="particles"></div>
+
+    <!-- Terminal Page -->
+    <div class="page-wrapper terminal-section">
+        <section>
+            <h1 class="page-title">Developer Terminal</h1>
+            <p class="page-subtitle">Explore my portfolio using terminal commands</p>
+        </section>
+
+        <section>
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-title">PRIYADHARSHINI_TERMINAL v1.0</div>
+                    <div class="terminal-buttons">
+                        <div class="terminal-btn close"></div>
+                        <div class="terminal-btn minimize"></div>
+                        <div class="terminal-btn maximize"></div>
+                    </div>
+                </div>
+
+                <div class="terminal-output" id="terminalOutput">
+                    <div class="terminal-line">
+                        <span class="output-info">> Welcome to Priyadharshini's Portfolio Terminal</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output-info">> Type 'help' to see available commands</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output-success">> Connected to: github.com/priyadharshini</span>
+                    </div>
+                </div>
+
+                <div class="terminal-input">
+                    <span class="terminal-prompt">portfolio@ps:~$</span>
+                    <input type="text" id="terminalInput" placeholder="Enter command..." autocomplete="off">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Available Commands</h2>
+            <div class="command-list">
+                <div class="command-card">
+                    <div class="command-name">help</div>
+                    <div class="command-description">Display all available commands and their descriptions</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">about</div>
+                    <div class="command-description">Show information about Priyadharshini</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">skills</div>
+                    <div class="command-description">Display technical skills and expertise</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">projects</div>
+                    <div class="command-description">List all completed projects and portfolio pieces</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">resume</div>
+                    <div class="command-description">Show resume and qualifications</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">contact</div>
+                    <div class="command-description">Display contact information</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant Section -->
+        <section class="ai-chat-section">
+            <h2 class="section-title">AI Assistant - Ask About Priyadharshini</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message">
+                        <div class="message-content">
+                            <strong>Assistant:</strong> Hi! I'm Priyadharshini's AI Assistant. Ask me anything about her skills, projects, experience, or certifications!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-questions">
+                    <button class="question-btn" onclick="askQuestion('Tell me about her projects')">
+                        📁 Her Projects
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('Show her technical skills')">
+                        💻 Technical Skills
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('Show certifications')">
+                        🏆 Certifications
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('Tell me about internship')">
+                        💼 Internship
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('Automation testing expertise')">
+                        🤖 Testing Skills
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('Contact information')">
+                        📧 Contact Info
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="animations.js"></script>
+    <script src="main.js"></script>
+    <script src="terminal.js"></script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyadharshini Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="modern.css">
+                    <link rel="stylesheet" href="pmodern.css">
+
+
+    <style>
+        .journey-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .roadmap-item {
+            display: grid;
+            grid-template-columns: 1fr 200px 1fr;
+            align-items: center;
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .roadmap-item:nth-child(even) {
+            grid-template-columns: 1fr 200px 1fr;
+            direction: rtl;
+        }
+
+        .roadmap-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .roadmap-item:nth-child(1) { animation-delay: 0.1s; }
+        .roadmap-item:nth-child(2) { animation-delay: 0.2s; }
+        .roadmap-item:nth-child(3) { animation-delay: 0.3s; }
+        .roadmap-item:nth-child(4) { animation-delay: 0.4s; }
+        .roadmap-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .roadmap-content {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .roadmap-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .roadmap-node {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            animation: pulseScale 2s infinite;
+        }
+
+        .roadmap-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .roadmap-content h3 {
+            color: var(--accent-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .achievement-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .achievement-badge {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .day-schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-card {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .schedule-card:nth-child(1) { animation-delay: 0.1s; }
+        .schedule-card:nth-child(2) { animation-delay: 0.2s; }
+        .schedule-card:nth-child(3) { animation-delay: 0.3s; }
+        .schedule-card:nth-child(4) { animation-delay: 0.4s; }
+        .schedule-card:nth-child(5) { animation-delay: 0.5s; }
+        .schedule-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .schedule-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .schedule-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .automation-lab {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .lab-card {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .lab-card:nth-child(1) { animation-delay: 0.1s; }
+        .lab-card:nth-child(2) { animation-delay: 0.2s; }
+        .lab-card:nth-child(3) { animation-delay: 0.3s; }
+        .lab-card:nth-child(4) { animation-delay: 0.4s; }
+        .lab-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .counter {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+
+        .lab-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .roadmap-item {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .roadmap-item:nth-child(even) > * {
+                direction: ltr;
+            }
+
+            .roadmap-content {
+                padding: 1.5rem;
+            }
+
+            .day-schedule,
+            .automation-lab {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .day-schedule,
+            .automation-lab {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-node {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">PRIYADHARSHINI S</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="journey.html" class="nav-link active">Journey</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="testing.html" class="nav-link">Testing</a></li>
+                <li><a href="github.html" class="nav-link">GitHub</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Particle Background -->
+    <div id="particles"></div>
+
+    <!-- Journey Page -->
+    <div class="page-wrapper journey-container">
+        <section style="max-width: 1200px; margin: 0 auto;">
+            <h1 class="page-title">My Journey</h1>
+            <p class="page-subtitle">From student to aspiring automation engineer</p>
+        </section>
+
+        <!-- Career Roadmap -->
+        <section class="journey-container">
+            <h2 class="section-title">Career Roadmap</h2>
+            <div class="roadmap-timeline">
+                <!-- School -->
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <h3>📚 School Foundation</h3>
+                        <p>Built strong fundamentals in science and mathematics</p>
+                        <div class="achievement-badges">
+                            <span class="achievement-badge">Class 10: 74.4%</span>
+                            <span class="achievement-badge">Class 12: 85%</span>
+                        </div>
+                    </div>
+                    <div class="roadmap-center">
+                        <div class="roadmap-node">📚</div>
+                        <div class="roadmap-label">School</div>
+                    </div>
+                    <div></div>
+                </div>
+
+                <!-- College -->
+                <div class="roadmap-item">
+                    <div></div>
+                    <div class="roadmap-center">
+                        <div class="roadmap-node">🎓</div>
+                        <div class="roadmap-label">College</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>🎓 Engineering Education</h3>
+                        <p>Pursuing B.E in Computer Science Engineering with focus on software development</p>
+                        <div class="achievement-badges">
+                            <span class="achievement-badge">CGPA: 7.98/10</span>
+                            <span class="achievement-badge">2022-2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internship -->
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <h3>💼 Internship Experience</h3>
+                        <p>6 months at Mallow Technologies working on Python backend development</p>
+                        <div class="achievement-badges">
+                            <span class="achievement-badge">Backend Dev</span>
+                            <span class="achievement-badge">Database Integration</span>
+                            <span class="achievement-badge">API Development</span>
+                        </div>
+                    </div>
+                    <div class="roadmap-center">
+                        <div class="roadmap-node">💼</div>
+                        <div class="roadmap-label">Internship</div>
+                    </div>
+                    <div></div>
+                </div>
+
+                <!-- Projects -->
+                <div class="roadmap-item">
+                    <div></div>
+                    <div class="roadmap-center">
+                        <div class="roadmap-node">🚀</div>
+                        <div class="roadmap-label">Projects</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>🚀 Project Development</h3>
+                        <p>Built multiple projects in automation testing, backend, and full-stack development</p>
+                        <div class="achievement-badges">
+                            <span class="achievement-badge">Finance Tracker</span>
+                            <span class="achievement-badge">Portfolio Site</span>
+                            <span class="achievement-badge">Automation Framework</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Goal -->
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <h3>🎯 Career Goal</h3>
+                        <p>Secure a position as QA Automation Engineer and grow into a testing leadership role</p>
+                        <div class="achievement-badges">
+                            <span class="achievement-badge">QA Engineer</span>
+                            <span class="achievement-badge">Test Automation</span>
+                            <span class="achievement-badge">Leadership</span>
+                        </div>
+                    </div>
+                    <div class="roadmap-center">
+                        <div class="roadmap-node">🎯</div>
+                        <div class="roadmap-label">Career Goal</div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Day in My Life -->
+        <section>
+            <h2 class="section-title">A Day in My Life</h2>
+            <div class="day-schedule">
+                <div class="schedule-card">
+                    <div class="schedule-icon">📖</div>
+                    <h4>Learning</h4>
+                    <p>Dedicating time to learning new technologies and frameworks</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">💻</div>
+                    <h4>Coding</h4>
+                    <p>Writing clean, efficient code for projects and assignments</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">🧪</div>
+                    <h4>Testing</h4>
+                    <p>Creating test cases and automating testing scenarios</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">📚</div>
+                    <h4>Reading</h4>
+                    <p>Reading tech articles, blogs, and documentation</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">🔨</div>
+                    <h4>Project Building</h4>
+                    <p>Working on real-world projects and portfolio pieces</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">🏆</div>
+                    <h4>Certifications</h4>
+                    <p>Pursuing professional certifications and skill validation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Automation Lab -->
+        <section>
+            <h2 class="section-title">Automation Lab Dashboard</h2>
+            <div class="automation-lab">
+                <div class="lab-card">
+                    <div class="lab-label">Test Cases Executed</div>
+                    <div class="counter" data-count="156">0</div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-label">Tests Passed</div>
+                    <div class="counter success" data-count="147">0</div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-label">Tests Failed</div>
+                    <div class="counter warning" data-count="9">0</div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-label">Defects Found</div>
+                    <div class="counter" data-count="23">0</div>
+                </div>
+                <div class="lab-card">
+                    <div class="lab-label">Framework Components</div>
+                    <div class="counter" data-count="15">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Hire Priyadharshini -->
+        <section>
+            <h2 class="section-title">Why Hire Priyadharshini?</h2>
+            <div class="day-schedule">
+                <div class="schedule-card">
+                    <div class="schedule-icon">⚡</div>
+                    <h4>Fast Learner</h4>
+                    <p>Quickly grasp new concepts and technologies</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">🎯</div>
+                    <h4>Testing Enthusiast</h4>
+                    <p>Passionate about quality assurance and automation</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">💡</div>
+                    <h4>Problem Solver</h4>
+                    <p>Creative approach to debugging and issue resolution</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">👥</div>
+                    <h4>Team Player</h4>
+                    <p>Collaborative and communicative in team environments</p>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-icon">📈</div>
+                    <h4>Continuous Learner</h4>
+                    <p>Always seeking growth and new challenges</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter[data-count]');
+            
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                counter.textContent = target;
+                                clearInterval(timer);
+                            } else {
+                                counter.textContent = Math.floor(current);
+                            }
+                        }, 16);
+
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+        }
+
+        document.addEventListener('DOMContentLoaded', animateCounters);
+    </script>
+</body>
+</html>
